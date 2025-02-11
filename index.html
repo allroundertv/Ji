@@ -1,0 +1,53 @@
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>jw player</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script> 
+  <style> 
+    body { 
+      margin: 0; 
+    } 
+    .jwplayer { 
+      position: absolute !important; 
+    } 
+    .jwplayer.jw-flag-aspect-mode { 
+      min-height: 100%; 
+      max-height: 100%; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <div id="jwplayerDiv"></div> 
+  <script> 
+    // Define the m3u8 file URL
+    var videoUrl = "https://dai.google.com/ssai/event/yeYP86THQ4yl7US8Zx5eug/master.m3u8"; 
+
+    // Dynamically create the link with the .m3u8 URL appended
+    var providerUrl = "https://cricketclipsprovider.netlify.app/?url=" + encodeURIComponent(videoUrl);
+
+    // Log the generated URL to the console
+    console.log("Generated URL: " + providerUrl);
+
+    // Set up the JW Player with the m3u8 URL
+    jwplayer("jwplayerDiv").setup({ 
+      file: videoUrl, 
+      position: 'bottom', 
+      autostart: true, 
+      stretching: "uniform", 
+      width: "100%", 
+      type: "hls",  // Use HLS type for m3u8 streams
+      drm: { 
+        clearkey: { 
+          keyId: "6a63735cef825eaa950bf10a48717f4b", 
+          key: "cf6b5b32f2a55d0b0bd685b6e8e4b084" 
+        } 
+      } 
+    });
+
+    // Optionally, you can redirect the user to the generated URL
+    // window.location.href = providerUrl;  // Uncomment to redirect to the generated URL
+  </script> 
+</body> 
+</html>
